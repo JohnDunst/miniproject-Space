@@ -7,7 +7,7 @@ let spaceship = [
         img: 'https://cdnb.artstation.com/p/assets/images/images/008/895/207/original/almir-sharifullin-1st-spaceship.gif?1515963945'
     }
 ]
-// randon nums
+// randon nums Im not sure why there is a return rando. I just kept it because cheatsheet
 const generateRandomNum = (min, max) => {
     let rando = Math.floor(Math.random() * (max - min) + min);
     return rando;
@@ -28,7 +28,7 @@ for(let i=0;i<6;i++) {
 }
 
 // Initial USS status display
-// i basically just copied a simple web dev video. just had to change elements and properties
+// i basically just copied a simple web dev video. just had to change elements and properties Displays ship stats
 const hull1 = document.querySelector('.hull1')
 hull1.innerHTML = `Hull: ${spaceship[0].hull}`
 const firepower1 = document.querySelector('.firepower1')
@@ -39,7 +39,7 @@ const img1 = document.querySelector('.ussImg')
 img1.setAttribute('src', spaceship[0].img)
 let userButton = document.querySelector('.userAtk')
 
-// Initial Enemy Status display
+//  Enemy Status display
 const hull2 = document.querySelector('.hull2')
 hull2.innerHTML = `${alien[0].hull} :Hull`
 const firepower2 = document.querySelector('.firepower2')
@@ -53,12 +53,13 @@ let enemyButton = document.querySelector('.enemyAtk')
 const message = document.querySelector('.message')
 const retreatButton = document.querySelector('.retreat')
 
-//Acts as ON/OFF switch for USS and Enemy Turns
+//Actsswitch for USS and Enemy Turns
 let ussTurn = true
 let alienTurn = false
 
 // Attack function 
-// Code was  tried to understand logic
+// Got assistance through the Expressions and loops
+//replay func was possible after both turns = false games over
 const userAttack = () => {
     if(ussTurn) {
         if(Math.random() < spaceship[0].accuracy ) {
@@ -146,12 +147,14 @@ const startGame = () => {
             img: 'shipGIF/ship5.gif'
         }
     ]
+
+    // I had to reuse the previous array to make replay work?!?!?!
     alien = []
     
     for(let i=0;i<6;i++) {
-        let img = ['https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif','https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif','https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif','https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif','https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif','https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif']
+        let img = ['https://i.gifer.com/origin/24/2432cf5ff737ad7d1794a29d042eb02e_w200.gif','https://cdn.pixabay.com/animation/2022/08/16/16/28/16-28-36-108_512.gif','https://media1.giphy.com/media/q0FsdbzsbwHVm/200w.gif?cid=6c09b952kq4n9b6alcdz39glvhg3zb4efcfdg6ieyibdpaeu&ep=v1_gifs_search&rid=200w.gif&ct=g','https://media3.giphy.com/media/Z70x1bA6mL3OM/giphy.gif','https://media4.giphy.com/media/r88w2d7tHqazFwNEGN/200w.gif?cid=6c09b9526tx067bwkm8f10092lkyjx1svusbbcm6usja0b1l&ep=v1_gifs_search&rid=200w.gif&ct=g','https://media.tenor.com/oHgHEzWWAFQAAAAC/space-adventure-cobra-spaceship.gif']
         let enemy = {
-           hull: Math.floor(Math.random() * 4) + 3,
+        hull: Math.floor(Math.random() * 4) + 3,
         firepower: Math.floor(Math.random() * 3) + 2,
         accuracy: (Math.floor(Math.random() * 3) + 6) / 10,
         img: img[i]
@@ -159,7 +162,7 @@ const startGame = () => {
         alien.push(enemy)
     }
     // User status display
-    //web3 gave example for using innerHTML for text in game
+    //web3 gave example for using innerHTML for text in game -- allows hull and other elements to be displayed
     hull1.innerHTML = `Hull: ${spaceship[0].hull}`
     firepower1.innerHTML = `Firepower: ${spaceship[0].firepower}`
     accuracy1.innerHTML = `Accuracy: ${spaceship[0].accuracy}`
